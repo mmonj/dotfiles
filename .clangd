@@ -1,0 +1,8 @@
+CompileFlags:
+  # Treat code as C++, use C++17 standard, enable more warnings.
+  Add: [-std=c++17, -Wall]
+
+Diagnostics:
+  # Tweak Clang-Tidy checks.
+  ClangTidy:
+    Add: [performance*, modernize*]
