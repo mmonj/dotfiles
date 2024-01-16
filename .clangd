@@ -1,6 +1,6 @@
 CompileFlags:
   # Treat code as C++, use C++17 standard, enable more warnings.
-  Add: [-std=c++17, -Wall]
+  Add: [-std=c++17, -Wall, -Werror, -Wextra, -Wpedantic]
 
 Diagnostics:
   # Tweak Clang-Tidy checks.
