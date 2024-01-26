@@ -3,7 +3,26 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["eslint:recommended", "plugin:unicorn/recommended"],
+  plugins: [
+    // "@typescript-eslint", // npm i -d eslint-plugin-import
+    // "unused-imports", // npm i -d eslint-plugin-unused-imports
+  ],
+  extends: [
+    "eslint:recommended",
+    "plugin:unicorn/recommended", // npm i -d eslint-plugin-unicorn
+
+    // "plugin:react/recommended", // npm i -d eslint-plugin-react
+    // "plugin:react-hooks/recommended",
+
+    // "plugin:@typescript-eslint/recommended", // npm i -d typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
+    // "plugin:@typescript-eslint/recommended-requiring-type-checking",
+
+    // "prettier", // npm i -d eslint-plugin-prettier eslint-config-prettier
+
+    // "plugin:import/typescript", // npm i -d eslint-plugin-import
+    // "plugin:import/errors",
+    // "plugin:import/warnings",
+  ],
   overrides: [
     {
       env: {
@@ -15,31 +34,40 @@ module.exports = {
       },
     },
   ],
+  // parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
+    // project: ["./tsconfig.json"], // extend config when plugin:@typescript-eslint is installed
   },
-  // ignorePatterns: ["dist/**", "dist-dev/**"],
 
-  // parser: "@typescript-eslint/parser",
-  // parserOptions: {
-  //   project: ["./tsconfig.json"],
-  // },
-  // plugins: ["@typescript-eslint", "unused-imports"],
-
-  plugins: ["unicorn"],
+  ignorePatterns: ["dist/**"],
   rules: {
-    // "sort-imports": ["error", { ignoreDeclarationSort: true }],
+    "sort-imports": ["error", { ignoreDeclarationSort: true }],
     "linebreak-style": ["error", "windows"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
-    "import/newline-after-import": ["error"],
+    "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    "no-use-before-define": ["error"],
+    // "import/newline-after-import": ["error"],
 
-    /*
-     *
-     Begin Unicorn rule overrides
-     *
-     * */
+    // "unused-imports/no-unused-imports": "error",
+    // "unused-imports/no-unused-vars": "error",
+
+    // "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    // "@typescript-eslint/explicit-module-boundary-types": "off",
+    // "@typescript-eslint/no-non-null-assertion": "off",
+    // "@typescript-eslint/no-empty-function": ["error" /*, { allow: ["arrowFunctions"] }*/],
+    // "@typescript-eslint/strict-boolean-expressions": "error",
+    // "@typescript-eslint/no-misused-promises": [
+    //   "error",
+    //   {
+    //     checksVoidReturn: {
+    //       attributes: false,
+    //     },
+    //   },
+    // ],
+
     "unicorn/consistent-destructuring": "off",
     "unicorn/custom-error-definition": "off",
     "unicorn/no-array-for-each": "off",
