@@ -67,6 +67,7 @@ module.exports = {
     //     },
     //   },
     // ],
+    // "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
 
     "unicorn/consistent-destructuring": "off",
     "unicorn/custom-error-definition": "off",
