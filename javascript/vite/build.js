@@ -1,6 +1,6 @@
 /*
   Build script for Vite in order to bundle multiple scripts to UMD
-  Made to work around the following Vite restriction: 
+  Intended to work around the following Vite restriction: 
     Multiple entry points are not supported when output formats include "umd" or "iife".
 */
 
@@ -49,6 +49,7 @@ async function buildBundle(inFile, buildDir, jsOutputName) {
     });
   } catch (error) {
     console.error("Build failed:", error);
+    return;
   }
   console.log("Build successful!");
 }
