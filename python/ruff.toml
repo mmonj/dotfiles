@@ -56,6 +56,8 @@ ignore = [
     "D212",
     "D400",
     "D401",
+    "D407",   # Missing dashed underline after section
+    "D413",   # Missing blank line after last section
     "D415",
     "E402",   # module imports must be at top of file; false positives for local imports
     "E501",   # line too long
