@@ -36,38 +36,39 @@ select = [
     "ALL", # include all the rules, including new ones
 ]
 ignore = [
-    "ANN",    # flake8-annotations
-    "COM",    # flake8-commas
-    "C90",    # mccabe complexity
-    "DJ",     # django
-    "EXE",    # flake8-executable
-    "T10",    # debugger
-    "TID",    # flake8-tidy-imports
-    "FBT",    # boolean trap (broken)
-    "D100",   # D* docstring style rules
-    "D101",
-    "D102",
-    "D103",
-    "D104",
-    "D105",
-    "D106",
-    "D107",
-    "D200",
-    "D205",
-    "D212",
-    "D400",
-    "D401",
-    "D407",   # Missing dashed underline after section
-    "D413",   # Missing blank line after last section
-    "D415",
-    "E402",   # module imports must be at top of file; false positives for local imports
-    "E501",   # line too long
-    "EM",     # f-/format/literal strings passed to exceptions
-    "ERA001", # lingering commented-out code
-    "RET507", # superfluous-else-continue (broken)
-    "T201",   # lingering print statements
-    "TRY003", # external messages in exceptions are too verbose
-    "TD002",  # require author in TODO comments
-    "TD003",  # require referencing an issue URL/number in next line
-    "FIX002", # too verbose descriptions of todos
+    "ANN",     # flake8-annotations
+    "COM",     # flake8-commas
+    "C90",     # mccabe complexity
+    "DJ",      # django
+    "EXE",     # flake8-executable
+    "T10",     # debugger
+    "TID",     # flake8-tidy-imports
+    "FBT",     # boolean trap (broken)
+    "D100",    # D* docstring style rules
+    "D101",    # Missing docstring in public class
+    "D102",    # Missing docstring in public method
+    "D103",    # Missing docstring in public function
+    "D104",    # Missing docstring in public package
+    "D105",    # Missing docstring in magic method
+    "D106",    # Missing docstring in public nested class
+    "D107",    # Missing docstring in __init__
+    "D200",    # One-line docstring should fit on one line
+    "D205",    # 1 blank line required between summary line and description
+    "D212",    # Multi-line docstring summary should start at the first line
+    "D400",    # First line should end with a period
+    "D401",    # First line of docstring should be in imperative mood
+    "D407",    # Missing dashed underline after section
+    "D413",    # Missing blank line after last section
+    "D415",    # First line should end with a period, question mark, or exclamation point
+    "E402",    # module imports must be at top of file; false positives for local imports
+    "E501",    # line too long
+    "EM",      # f-/format/literal strings passed to exceptions
+    "ERA001",  # lingering commented-out code
+    "PLR0913", # too-many-arguments
+    "T201",    # lingering print statements
+    "TRY003",  # external messages in exceptions are too verbose
+    "TRY300",  # Checks for return statements in try blocks
+    "TD002",   # require author in TODO comments
+    "TD003",   # require referencing an issue URL/number in next line
+    "FIX002",  # too verbose descriptions of todos
 ]
