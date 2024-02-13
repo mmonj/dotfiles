@@ -43,6 +43,7 @@ ignore = [
     "EXE",    # flake8-executable
     "T10",    # debugger
     "TID",    # flake8-tidy-imports
+    "FBT",    # boolean trap (broken)
     "D100",   # D* docstring style rules
     "D101",
     "D102",
@@ -63,6 +64,7 @@ ignore = [
     "E501",   # line too long
     "EM",     # f-/format/literal strings passed to exceptions
     "ERA001", # lingering commented-out code
+    "RET507", # superfluous-else-continue (broken)
     "T201",   # lingering print statements
     "TRY003", # external messages in exceptions are too verbose
     "TD002",  # require author in TODO comments
