@@ -44,7 +44,6 @@ module.exports = {
   ignorePatterns: ["dist/**"],
   rules: {
     "sort-imports": ["error", { ignoreDeclarationSort: true }],
-    "linebreak-style": ["error", "windows"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
