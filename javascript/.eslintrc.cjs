@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
   },
   plugins: [
-    // "@typescript-eslint", // npm i -d eslint-plugin-import
+    // "@typescript-eslint", // npm i -d typescript-eslint
     // "unused-imports", // npm i -d eslint-plugin-unused-imports
   ],
   extends: [
@@ -51,7 +51,6 @@ module.exports = {
     // "import/newline-after-import": ["error"],
 
     // "unused-imports/no-unused-imports": "error",
-    // "unused-imports/no-unused-vars": "error",
 
     // "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     // "@typescript-eslint/explicit-module-boundary-types": "off",
