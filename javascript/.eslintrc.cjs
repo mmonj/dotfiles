@@ -1,15 +1,4 @@
-function getConfig(ruleStruct, keyName, defaultReturn) {
-  if (!Object.keys(ruleStruct).includes(keyName)) {
-    throw new Error(`${keyName} is not present in object`);
-  }
-
-  if (!ruleStruct.isEnabled) {
-    return defaultReturn;
-  }
-
-  return ruleStruct[keyName];
-}
-
+// overrides for eslint:recommended
 const StandardConfig = {
   isEnabled: true,
   rules: {
@@ -22,7 +11,7 @@ const StandardConfig = {
   },
 };
 
-// npm i -d eslint-plugin-unicorn
+// npm i -D eslint-plugin-unicorn
 const UnicornConfig = {
   isEnabled: true,
   extends: ["plugin:unicorn/recommended"],
@@ -47,8 +36,22 @@ const UnicornConfig = {
   },
 };
 
-// npm i -d eslint-plugin-import
-const ImportsPlugin = {
+// npm i -D eslint-plugin-jsdoc
+const JsdocConfig = {
+  isEnabled: false,
+  plugins: ["jsdoc"],
+  extends: ["plugin:jsdoc/recommended"],
+  rules: {
+    "jsdoc/require-description": "off",
+    "jsdoc/require-param-description": "off",
+    "jsdoc/require-returns-description": "off",
+    "jsdoc/no-undefined-types": "off", // checking is done by TS lsp
+    "jsdoc/require-returns": ["warn", { forceRequireReturn: true }],
+  },
+};
+
+// npm i -D eslint-plugin-import
+const ImportsPluginConfig = {
   isEnabled: false,
   extends: ["plugin:import/typescript", "plugin:import/errors", "plugin:import/warnings"],
   rules: {
@@ -56,7 +59,7 @@ const ImportsPlugin = {
   },
 };
 
-// npm i -d eslint-plugin-unused-imports
+// npm i -D eslint-plugin-unused-imports
 const UnusedImportsConfig = {
   isEnabled: false,
   plugins: ["unused-imports"],
@@ -65,7 +68,7 @@ const UnusedImportsConfig = {
   },
 };
 
-// npm i -d typescript typescript-eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+// npm i -D typescript typescript-eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 const TypescriptConfig = {
   isEnabled: false,
   plugins: ["@typescript-eslint"],
@@ -95,23 +98,42 @@ const TypescriptConfig = {
   },
 };
 
-// npm i -d eslint-plugin-react
+// npm i -D eslint-plugin-react
 const ReactConfig = {
   isEnabled: false,
   extends: ["plugin:react/recommended"],
 };
 
-// npm i -d eslint-plugin-react-hooks
+// npm i -D eslint-plugin-react-hooks
 const ReactHooksConfig = {
   isEnabled: false,
   extends: ["plugin:react-hooks/recommended"],
 };
 
-// npm i -d eslint-plugin-prettier eslint-config-prettier
+// npm i -D eslint-plugin-prettier eslint-config-prettier
 const PrettierConfig = {
   isEnabled: false,
   extends: ["prettier"],
 };
+
+/**
+ *
+ * @param {Record<string, any>} configData
+ * @param {string} keyName
+ * @param {Record<string, any>} defaultReturn
+ * @returns {Record<string, any>}
+ */
+function getConfig(configData, keyName, defaultReturn) {
+  if (!Object.keys(configData).includes(keyName)) {
+    throw new Error(`${keyName} is not present in object`);
+  }
+
+  if (!configData.isEnabled) {
+    return defaultReturn;
+  }
+
+  return configData[keyName];
+}
 
 const FinalConfig = {
   env: {
@@ -119,13 +141,15 @@ const FinalConfig = {
     es2021: true,
   },
   plugins: [
+    ...getConfig(JsdocConfig, "plugins", []),
     ...getConfig(TypescriptConfig, "plugins", []),
     ...getConfig(UnusedImportsConfig, "plugins", []),
   ],
   extends: [
     "eslint:recommended",
     ...getConfig(UnicornConfig, "extends", []),
-    ...getConfig(ImportsPlugin, "extends", []),
+    ...getConfig(JsdocConfig, "extends", []),
+    ...getConfig(ImportsPluginConfig, "extends", []),
     ...getConfig(TypescriptConfig, "extends", []),
     ...getConfig(ReactConfig, "extends", []),
     ...getConfig(ReactHooksConfig, "extends", []),
@@ -152,10 +176,11 @@ const FinalConfig = {
   ignorePatterns: ["dist/**"],
   rules: {
     ...getConfig(StandardConfig, "rules", {}),
-    ...getConfig(ImportsPlugin, "rules", {}),
+    ...getConfig(UnicornConfig, "rules", {}),
+    ...getConfig(JsdocConfig, "rules", {}),
+    ...getConfig(ImportsPluginConfig, "rules", {}),
     ...getConfig(UnusedImportsConfig, "rules", {}),
     ...getConfig(TypescriptConfig, "rules", {}),
-    ...getConfig(UnicornConfig, "rules", {}),
   },
 };
 
