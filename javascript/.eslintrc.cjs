@@ -47,7 +47,8 @@ module.exports = {
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    "no-use-before-define": ["error"],
+    "no-use-before-define": ["off"],
+    camelcase: ["error", { properties: "never", ignoreDestructuring: true }],
     // "import/newline-after-import": ["error"],
 
     // "unused-imports/no-unused-imports": "error",
