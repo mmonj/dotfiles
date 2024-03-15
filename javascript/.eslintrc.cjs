@@ -13,7 +13,7 @@ const StandardConfig = {
 
 // npm i -D eslint-plugin-unicorn
 const UnicornConfig = {
-  isEnabled: true,
+  isEnabled: false,
   extends: ["plugin:unicorn/recommended"],
   rules: {
     "unicorn/consistent-destructuring": "off",
@@ -59,6 +59,12 @@ const ImportsPluginConfig = {
   },
 };
 
+// npm i -D eslint-plugin-import
+const ImportsPluginTypescriptConfig = {
+  isEnabled: false,
+  extends: ["plugin:import/typescript"],
+};
+
 // npm i -D eslint-plugin-unused-imports
 const UnusedImportsConfig = {
   isEnabled: false,
@@ -75,6 +81,7 @@ const TypescriptConfig = {
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/strict",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -96,6 +103,13 @@ const TypescriptConfig = {
     ],
     "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
   },
+};
+
+// npm i -D eslint-plugin-solid
+const SolidJsConfig = {
+  isEnabled: false,
+  plugins: ["solid"],
+  extends: ["plugin:solid/recommended"],
 };
 
 // npm i -D eslint-plugin-react
@@ -127,6 +141,9 @@ function getConfig(configData, keyName, defaultReturn) {
   if (!Object.keys(configData).includes(keyName)) {
     throw new Error(`${keyName} is not present in object`);
   }
+  if (configData.isEnabled === undefined) {
+    throw new Error("isEnabled attribute is not set in config");
+  }
 
   if (!configData.isEnabled) {
     return defaultReturn;
@@ -144,16 +161,19 @@ const FinalConfig = {
     ...getConfig(JsdocConfig, "plugins", []),
     ...getConfig(TypescriptConfig, "plugins", []),
     ...getConfig(UnusedImportsConfig, "plugins", []),
+    ...getConfig(SolidJsConfig, "plugins", []),
   ],
   extends: [
     "eslint:recommended",
     ...getConfig(UnicornConfig, "extends", []),
     ...getConfig(JsdocConfig, "extends", []),
     ...getConfig(ImportsPluginConfig, "extends", []),
+    ...getConfig(ImportsPluginTypescriptConfig, "extends", []),
     ...getConfig(TypescriptConfig, "extends", []),
     ...getConfig(ReactConfig, "extends", []),
     ...getConfig(ReactHooksConfig, "extends", []),
     ...getConfig(PrettierConfig, "extends", []),
+    ...getConfig(SolidJsConfig, "extends", []),
   ],
   overrides: [
     {
