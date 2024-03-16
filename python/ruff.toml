@@ -31,6 +31,8 @@ exclude = [
 line-length = 100
 indent-width = 4
 
+target-version = "py311"
+
 [lint]
 select = [
     "ALL", # include all the rules, including new ones
@@ -53,19 +55,22 @@ ignore = [
     "D106",    # Missing docstring in public nested class
     "D107",    # Missing docstring in __init__
     "D200",    # One-line docstring should fit on one line
-    "D203",    # ensures docstrings for classes have 1 blank line between it and class declaration
     "D205",    # 1 blank line required between summary line and description
     "D212",    # Multi-line docstring summary should start at the first line
     "D400",    # First line should end with a period
     "D401",    # First line of docstring should be in imperative mood
+    "D406",    # Section name should end with a newline
     "D407",    # Missing dashed underline after section
+    "D411",    # Missing blank line before section
     "D413",    # Missing blank line after last section
     "D415",    # First line should end with a period, question mark, or exclamation point
     "E402",    # module imports must be at top of file; false positives for local imports
     "E501",    # line too long
+    "F403",    # undefined-local-with-import-star; mypy analyzes undefined names for wildcards.
     "EM",      # f-/format/literal strings passed to exceptions
     "ERA001",  # lingering commented-out code
     "PLR0913", # too-many-arguments
+    "RUF012",  # Mutable class attributes should be annotated with typing.ClassVar
     "T201",    # lingering print statements
     "TRY003",  # external messages in exceptions are too verbose
     "TRY300",  # Checks for return statements in try blocks
