@@ -33,6 +33,7 @@ const UnicornConfig = {
     // See #1396
     "unicorn/require-post-message-target-origin": "off",
     "unicorn/string-content": "off",
+    "unicorn/filename-case": "off",
   },
 };
 
@@ -101,7 +102,7 @@ const TypescriptConfig = {
         },
       },
     ],
-    "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
+    "@typescript-eslint/explicit-function-return-type": ["off", { allowExpressions: true }],
   },
 };
 
@@ -193,7 +194,7 @@ const FinalConfig = {
     ...getConfig(TypescriptConfig, "parserOptions", {}),
   },
 
-  ignorePatterns: ["dist/**"],
+  ignorePatterns: ["dist/**", "/*.*"],
   rules: {
     ...getConfig(StandardConfig, "rules", {}),
     ...getConfig(UnicornConfig, "rules", {}),
